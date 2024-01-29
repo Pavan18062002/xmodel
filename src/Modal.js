@@ -11,7 +11,7 @@ function Modal({ show, handleClose, handleSubmit, formData, setFormData }) {
     //   handleClose();
     // };
   return (
-    <div className={show ? "display-block" : "display-none"}>
+    <div className={show ? ".model-display-block" : ".model-display-none"}>
       <div className="modal-content">
         <h2>Fill Details</h2>
         <form onSubmit={(e) => handleSubmit(e, setFormData)}>

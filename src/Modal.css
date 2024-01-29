@@ -55,11 +55,11 @@
     align-self: center;
   }
   
-  .display-block {
+  .model-display-block {
     display: block;
   }
   
-  .display-none {
+  .model-display-none {
     display: none;
   }
 
