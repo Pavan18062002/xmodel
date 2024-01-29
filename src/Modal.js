@@ -1,7 +1,15 @@
+
 import React from "react";
 import "./Modal.css";
 
-function Modal({ show, handleSubmit, formData, setFormData }) {
+function Modal({ show, handleClose, handleSubmit, formData, setFormData }) {
+    // const modalRef = useRef(null);
+  
+    // const handleFormSubmit = (event) => {
+    //   handleSubmit(event);
+    //   // Close the modal (optional, depends on your use case)
+    //   handleClose();
+    // };
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>
       <div className="modal-content">
@@ -48,6 +56,6 @@ function Modal({ show, handleSubmit, formData, setFormData }) {
       </div>
     </div>
   );
-}
+  }
 
 export default Modal;

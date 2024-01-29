@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Modal from "./Modal";
 
-function App() {
+const App = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     phone: "",
     dob: "",
   });
+
+  const handleOutsideClick = (event) => {
+    if (isOpen && event.target.classList.contains("modal")) {
+      closeModal();
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,6 +46,16 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
   return (
     <div className="App">
       <h1>User Details Modal</h1>
@@ -57,6 +69,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
